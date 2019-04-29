@@ -194,11 +194,11 @@ public class CustomCarModelView extends View implements View.OnTouchListener {
         // topBody = WISERApp.getScreenHeight() / 2 - heightBody / 2 -
         // WISERApp.dip2px(50);
         mDestRectB = new Rect(leftBody, topBody, leftBody + widthBody, topBody + carBodyBitmap.getHeight());
-        leftFrontDoorOpen(true);
-        rightFrontDoorOpen(true);
-        leftBackDoorOpen(true);
-        rightBackDoorOpen(true);
-        tDoorOpen(true);
+        lfDoorCreateRect();
+        rfDoorCreateRect();
+        lbDoorCreateRect();
+        rbDoorCreateRect();
+        tDoorRect();
 
         setOnTouchListener(this);
     }
@@ -212,47 +212,42 @@ public class CustomCarModelView extends View implements View.OnTouchListener {
         mPaint.setTextSize(textSize);
     }
 
-    private void leftFrontDoorOpen(boolean isOpen) {
+    //左前门
+    private void lfDoorCreateRect() {
         if (carDoorBitmapLFD == null) return;
-        if (isOpen) {
-            mSrcRectLFD = new Rect(0, 0, carDoorBitmapLFD.getWidth(), carDoorBitmapLFD.getHeight());
-            mDestRectLFD = new Rect(leftBody - carDoorBitmapLFD.getWidth(), topBody + heightBody * 4 / 15, leftBody + 20, topBody + heightBody * 4 / 15 + carDoorBitmapLFD.getHeight());
-        }
+        mSrcRectLFD = new Rect(0, 0, carDoorBitmapLFD.getWidth(), carDoorBitmapLFD.getHeight());
+        mDestRectLFD = new Rect(leftBody - carDoorBitmapLFD.getWidth(), topBody + heightBody * 4 / 15, leftBody + 20, topBody + heightBody * 4 / 15 + carDoorBitmapLFD.getHeight());
     }
 
-    private void rightFrontDoorOpen(boolean isOpen) {
+    //右前门
+    private void rfDoorCreateRect() {
         if (carDoorBitmapRFD == null) return;
-        if (isOpen) {
-            mSrcRectRFD = new Rect(0, 0, carDoorBitmapRFD.getWidth(), carDoorBitmapRFD.getHeight());
-            mDestRectRFD = new Rect(leftBody + widthBody - 20, topBody + heightBody * 4 / 15, leftBody + widthBody - 20 + carDoorBitmapRFD.getWidth(),
-                    topBody + heightBody * 4 / 15 + carDoorBitmapRFD.getHeight());
-        }
+        mSrcRectRFD = new Rect(0, 0, carDoorBitmapRFD.getWidth(), carDoorBitmapRFD.getHeight());
+        mDestRectRFD = new Rect(leftBody + widthBody - 20, topBody + heightBody * 4 / 15, leftBody + widthBody - 20 + carDoorBitmapRFD.getWidth(),
+                topBody + heightBody * 4 / 15 + carDoorBitmapRFD.getHeight());
     }
 
-    private void leftBackDoorOpen(boolean isOpen) {
+    //左后门
+    private void lbDoorCreateRect() {
         if (carDoorBitmapLBD == null) return;
-        if (isOpen) {
-            mSrcRectLBD = new Rect(0, 0, carDoorBitmapLBD.getWidth(), carDoorBitmapLBD.getHeight());
-            mDestRectLBD = new Rect(leftBody - carDoorBitmapLBD.getWidth(), topBody + heightBody * 8 / 15, leftBody + 20, topBody + heightBody * 8 / 15 + carDoorBitmapLBD.getHeight());
-        }
+        mSrcRectLBD = new Rect(0, 0, carDoorBitmapLBD.getWidth(), carDoorBitmapLBD.getHeight());
+        mDestRectLBD = new Rect(leftBody - carDoorBitmapLBD.getWidth(), topBody + heightBody * 8 / 15, leftBody + 20, topBody + heightBody * 8 / 15 + carDoorBitmapLBD.getHeight());
     }
 
-    private void rightBackDoorOpen(boolean isOpen) {
+    //右后门
+    private void rbDoorCreateRect() {
         if (carDoorBitmapRFD == null) return;
-        if (isOpen) {
-            mSrcRectRBD = new Rect(0, 0, carDoorBitmapRFD.getWidth(), carDoorBitmapRFD.getHeight());
-            mDestRectRBD = new Rect(leftBody + widthBody - 20, topBody + heightBody * 8 / 15, leftBody + widthBody - 20 + carDoorBitmapRBD.getWidth(),
-                    topBody + heightBody * 8 / 15 + carDoorBitmapRBD.getHeight());
-        }
+        mSrcRectRBD = new Rect(0, 0, carDoorBitmapRFD.getWidth(), carDoorBitmapRFD.getHeight());
+        mDestRectRBD = new Rect(leftBody + widthBody - 20, topBody + heightBody * 8 / 15, leftBody + widthBody - 20 + carDoorBitmapRBD.getWidth(),
+                topBody + heightBody * 8 / 15 + carDoorBitmapRBD.getHeight());
     }
 
-    private void tDoorOpen(boolean isOpen) {
+    //后备箱
+    private void tDoorRect() {
         if (carDoorBitmapTD == null) return;
-        if (isOpen) {
-            mSrcRectTD = new Rect(0, 0, carDoorBitmapTD.getWidth(), carDoorBitmapTD.getHeight());
-            mDestRectTD = new Rect(leftBody + widthBody / 2 + carDoorBitmapTD.getWidth() / 2, topBody + heightBody * 12 / 15, leftBody + widthBody / 2 - carDoorBitmapTD.getWidth() / 2,
-                    topBody + heightBody * 12 / 15 + carDoorBitmapTD.getHeight());
-        }
+        mSrcRectTD = new Rect(0, 0, carDoorBitmapTD.getWidth(), carDoorBitmapTD.getHeight());
+        mDestRectTD = new Rect(leftBody + widthBody / 2 + carDoorBitmapTD.getWidth() / 2, topBody + heightBody * 12 / 15, leftBody + widthBody / 2 - carDoorBitmapTD.getWidth() / 2,
+                topBody + heightBody * 12 / 15 + carDoorBitmapTD.getHeight());
     }
 
     @SuppressLint("DrawAllocation")
